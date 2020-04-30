@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import SwapiService from "../../services/swapi-service";
+import "./style.css"
 
 export default class RandomPlanet extends Component {
 
@@ -59,3 +60,5 @@ export default class RandomPlanet extends Component {
         )
     }
 }
+
+// TODO 58 next
