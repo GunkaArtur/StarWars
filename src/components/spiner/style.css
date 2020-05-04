@@ -1,0 +1,56 @@
+@keyframes ldio-qyjoao2xh5q {
+    0% { transform: rotate(0) }
+    100% { transform: rotate(360deg) }
+}
+.ldio-qyjoao2xh5q div { box-sizing: border-box!important }
+.ldio-qyjoao2xh5q > div {
+    position: absolute;
+    width: 144px;
+    height: 144px;
+    top: 28px;
+    left: 28px;
+    border-radius: 50%;
+    border: 16px solid #000;
+    border-color: #93dbe9 transparent #93dbe9 transparent;
+    animation: ldio-qyjoao2xh5q 1s linear infinite;
+}
+.ldio-qyjoao2xh5q > div:nth-child(2) { border-color: transparent }
+.ldio-qyjoao2xh5q > div:nth-child(2) div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg);
+}
+.ldio-qyjoao2xh5q > div:nth-child(2) div:before, .ldio-qyjoao2xh5q > div:nth-child(2) div:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: -16px;
+    left: 48px;
+    background: #93dbe9;
+    border-radius: 50%;
+    box-shadow: 0 128px 0 0 #93dbe9;
+}
+.ldio-qyjoao2xh5q > div:nth-child(2) div:after {
+    left: -16px;
+    top: 48px;
+    box-shadow: 128px 0 0 0 #93dbe9;
+}
+.loadingio-spinner-dual-ring-awk054ewe7h {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+    background: none;
+}
+.ldio-qyjoao2xh5q {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    transform-origin: 0 0; /* see note above */
+}
+.ldio-qyjoao2xh5q div { box-sizing: content-box; }
