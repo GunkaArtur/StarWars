@@ -3,6 +3,7 @@ import "./style.css"
 import SwapiService from "../../services/swapi-service";
 import Spiner from "../spiner";
 import ErrorIndicator from "../error-indicator";
+import ErrorButton from "../error-button";
 
 export default class PersonDetails extends Component {
 
@@ -88,18 +89,19 @@ const PersonView = ({person}) => {
                 <h2>{name}</h2>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">
-                        <span className="list-group-item">Gender</span>
+                        <span>Gender</span>
                         <span>{gender}</span>
                     </li>
                     <li className="list-group-item">
-                        <span className="list-group-item">Date of birth</span>
+                        <span>Date of birth</span>
                         <span>{birthYear}</span>
                     </li>
                     <li className="list-group-item">
-                        <span className="list-group-item">Eye color</span>
+                        <span>Eye color</span>
                         <span>{eyeColor}</span>
                     </li>
                 </ul>
+                <ErrorButton />
             </div>
         </>
     )
