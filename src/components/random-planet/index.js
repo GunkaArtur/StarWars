@@ -87,5 +87,3 @@ const PlanetView = ({planet}) => {
         </>
     )
 }
-
-// TODO 59 next
