@@ -1,0 +1,12 @@
+.error-indicator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 150px;
+    color: #00bc8c;
+    width: 100%;
+    text-align: center;
+}
+.boom {
+    font-size: 32px;
+}
