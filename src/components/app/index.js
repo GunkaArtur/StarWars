@@ -4,14 +4,12 @@ import RandomPlanet from "../random-planet";
 import ItemList from "../item-list";
 import PersonDetails from "../person-details";
 import "./style.css";
-import Spiner from "../spiner";
 
 const App = () => {
     return(
         <div className="app">
             <Header />
-            <Spiner />
-            {/*<RandomPlanet />*/}
+            <RandomPlanet />
 
             <div className="row mb2">
                 <div className="col-md-6">
