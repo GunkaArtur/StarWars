@@ -8,15 +8,15 @@ export default class RandomPlanet extends Component {
 
     swapiService = new SwapiService()
 
-    constructor() {
-        super();
-        this.updatePlanet()
-    }
-
     state = {
         planet: {},
         loading: true,
         error: false
+    }
+
+    componentDidMount() {
+        this.updatePlanet()
+        this.interval = setInterval(this.updatePlanet,3500)
     }
 
     onPlanetLoaded = (planet) => {
@@ -33,7 +33,7 @@ export default class RandomPlanet extends Component {
         })
     }
 
-    updatePlanet() {
+    updatePlanet =()=> {
         const id = Math.floor(Math.random()*25+2);
         this.swapiService.getPlanet(id)
             .then(this.onPlanetLoaded)
@@ -62,9 +62,11 @@ export default class RandomPlanet extends Component {
 const PlanetView = ({planet}) => {
     const { id, name, population, rotationPeriod, diameter } = planet;
 
+    const imgUrl = `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`;
+
     return (
         <>
-            <img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} alt="man" className="planet-image" width={300} height={300}/>
+            <img src={imgUrl} alt="man" className="planet-image" width={300} height={300}/>
             <div>
                 <h4>{name}</h4>
                 <ul className="list-group list-group-flush">
