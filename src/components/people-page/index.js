@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import ItemList from "../item-list";
 import PersonDetails from "../person-details";
 import ErrorIndicator from "../error-indicator";
-import ErrorButton from "../error-button";
 
 export default class PeoplePage extends Component {
 
@@ -22,7 +21,6 @@ export default class PeoplePage extends Component {
     }
 
     render() {
-
         if(this.state.hasError){
             return <ErrorIndicator />
         }

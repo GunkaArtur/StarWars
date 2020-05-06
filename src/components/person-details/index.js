@@ -49,7 +49,6 @@ export default class PersonDetails extends Component {
     }
 
     render() {
-
         const {person, error} = this.state
 
         if(!this.state.person){
@@ -58,8 +57,6 @@ export default class PersonDetails extends Component {
         const {loading}=this.state
 
         const hasData = !(loading || error)
-
-
 
         const content = hasData ? <PersonView person={person} /> : null
         const spinner = loading ? <Spiner /> : null
