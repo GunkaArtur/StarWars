@@ -27,6 +27,7 @@ export default class App extends Component {
             <ItemList
               onItemSelected={this.onPersonSelected}
               getData={this.swapiService.getAllPlanets}
+              renderItem={({ name, population }) => `${name} (${population})`}
             />
           </div>
           <div className="col-md-6">
@@ -39,6 +40,7 @@ export default class App extends Component {
             <ItemList
               onItemSelected={this.onPersonSelected}
               getData={this.swapiService.getAllStarhips}
+              renderItem={({ name, model }) => `${name} (${model} )`}
             />
           </div>
           <div className="col-md-6">
