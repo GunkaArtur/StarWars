@@ -11,7 +11,7 @@ export default class PersonDetails extends Component {
   state = {
     person: null,
     loading: true,
-    error: null,
+    error: null
   };
 
   componentDidMount() {
@@ -24,10 +24,10 @@ export default class PersonDetails extends Component {
     }
   }
 
-  onError = (err) => {
+  onError = err => {
     this.setState({
       error: true,
-      loading: false,
+      loading: false
     });
   };
 
@@ -39,10 +39,10 @@ export default class PersonDetails extends Component {
 
     this.swapiService
       .getPerson(personId)
-      .then((person) => {
+      .then(person => {
         this.setState({
           person,
-          loading: false,
+          loading: false
         });
       })
       .catch(this.onError);
