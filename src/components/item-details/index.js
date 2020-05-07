@@ -1,64 +1,62 @@
 import React, { Component } from "react";
 import "./style.css";
-import SwapiService from "../../services/swapi-service";
 import Spiner from "../spiner";
 import ErrorIndicator from "../error-indicator";
 import ErrorButton from "../error-button";
 
-export default class PersonDetails extends Component {
-  swapiService = new SwapiService();
-
+export default class ItemDetails extends Component {
   state = {
-    person: null,
+    item: null,
+    img: null,
     loading: true,
     error: null
   };
 
   componentDidMount() {
-    this.updatePerson();
+    this.updateItem();
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.personId !== prevProps.personId) {
-      this.updatePerson();
+    if (this.props.itemId !== prevProps.itemId) {
+      this.updateItem();
     }
   }
 
-  onError = err => {
+  onError = () => {
     this.setState({
       error: true,
       loading: false
     });
   };
 
-  updatePerson() {
-    const { personId } = this.props;
-    if (!personId) {
+  updateItem() {
+    const { itemId, getData, getImgUrl } = this.props;
+    if (!itemId) {
       return;
     }
 
-    this.swapiService
-      .getPerson(personId)
-      .then(person => {
+    getData(itemId)
+      .then(item => {
         this.setState({
-          person,
-          loading: false
+          item,
+          loading: false,
+          img: getImgUrl(item)
         });
       })
       .catch(this.onError);
   }
 
   render() {
-    const { person, error } = this.state;
+    const { item, error, img } = this.state;
 
-    if (!this.state.person) {
+    if (!this.state.item) {
       return <span>Select a person</span>;
     }
     const { loading } = this.state;
 
     const hasData = !(loading || error);
 
-    const content = hasData ? <PersonView person={person} /> : null;
+    const content = hasData ? <ItemView item={item} img={img} /> : null;
     const spinner = loading ? <Spiner /> : null;
     const errorMessage = error ? <ErrorIndicator /> : null;
 
@@ -72,20 +70,12 @@ export default class PersonDetails extends Component {
   }
 }
 
-const PersonView = ({ person }) => {
-  const { id, name, gender, birthYear, eyeColor } = person;
-
-  const imgUrl = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
+const ItemView = ({ item, img }) => {
+  const { name, gender, birthYear, eyeColor } = item;
 
   return (
     <>
-      <img
-        src={imgUrl}
-        alt=""
-        className="person-image"
-        width={300}
-        height={300}
-      />
+      <img src={img} alt="" className="person-image" width={300} height={300} />
 
       <div className="card-body">
         <h2>{name}</h2>

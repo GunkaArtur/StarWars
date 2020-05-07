@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ItemList from "../item-list";
-import PersonDetails from "../person-details";
+import ItemDetails from "../item-details";
 import SwapiService from "../../services/swapi-service";
 import Row from "../row";
 import ErrorBoundry from "../error-boundry";
@@ -9,28 +9,26 @@ export default class PeoplePage extends Component {
   swapiService = new SwapiService();
 
   state = {
-    selectedPerson: 5
+    selectedItem: 5
   };
 
-  onPersonSelected = id => {
+  onItemSelected = id => {
     this.setState({
-      selectedPerson: id
+      selectedItem: id
     });
   };
 
   render() {
     const itemList = (
       <ItemList
-        onItemSelected={this.onPersonSelected}
+        onItemSelected={this.onItemSelected}
         getData={this.swapiService.getAllPeople}
         renderItem={({ name, gender, birthYear }) =>
           `${name} (${gender} , ${birthYear})`
         }
       />
     );
-    const personDetails = (
-      <PersonDetails personId={this.state.selectedPerson} />
-    );
+    const personDetails = <ItemDetails itemId={this.state.selectedItem} />;
 
     return (
       <ErrorBoundry>

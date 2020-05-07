@@ -3,9 +3,10 @@ import Header from "../header";
 import RandomPlanet from "../random-planet";
 import "./style.css";
 import PeoplePage from "../people-page";
-import ItemList from "../item-list";
-import PersonDetails from "../person-details";
+import Row from "../row";
+import ItemDetails from "../item-details";
 import SwapiService from "../../services/swapi-service";
+import Record from "../record";
 
 export default class App extends Component {
   swapiService = new SwapiService();
@@ -15,41 +16,37 @@ export default class App extends Component {
   };
 
   render() {
+    const {
+      getPerson,
+      getStarship,
+      getPersonImg,
+      getStarshipImg
+    } = this.swapiService;
+
+    const personDetails = (
+      <ItemDetails itemId={11} getData={getPerson} getImgUrl={getPersonImg}>
+        <Record field="gender" label="Gender" />
+      </ItemDetails>
+    );
+    const starhipDetails = (
+      <ItemDetails
+        itemId={5}
+        getData={getStarship}
+        getImgUrl={getStarshipImg}
+      />
+    );
+
     return (
       <div className="app">
         <Header />
-        <RandomPlanet />
+        {/*<RandomPlanet />*/}
 
-        <PeoplePage />
+        <Row left={personDetails} right={starhipDetails} />
 
-        <div className="row mb2">
-          <div className="col-md-6">
-            <ItemList
-              onItemSelected={this.onPersonSelected}
-              getData={this.swapiService.getAllPlanets}
-              renderItem={({ name, population }) => `${name} (${population})`}
-            />
-          </div>
-          <div className="col-md-6">
-            <PersonDetails personId={this.state.selectedPerson} />
-          </div>
-        </div>
-
-        <div className="row mb2">
-          <div className="col-md-6">
-            <ItemList
-              onItemSelected={this.onPersonSelected}
-              getData={this.swapiService.getAllStarhips}
-              renderItem={({ name, model }) => `${name} (${model} )`}
-            />
-          </div>
-          <div className="col-md-6">
-            <PersonDetails personId={this.state.selectedPerson} />
-          </div>
-        </div>
+        {/*<PeoplePage />*/}
       </div>
     );
   }
 }
 
-// TODO 72 next
+// TODO 77 next
