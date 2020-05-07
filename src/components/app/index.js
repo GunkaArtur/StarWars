@@ -1,25 +1,24 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Header from "../header";
 import RandomPlanet from "../random-planet";
 import "./style.css";
 import PeoplePage from "../people-page";
 
-export default class  App extends Component {
+export default class App extends Component {
+  state = {
+    showRandomPlanet: true,
+  };
 
-    state = {
-        showRandomPlanet: true,
-    }
+  render() {
+    return (
+      <div className="app">
+        <Header />
+        <RandomPlanet />
 
-    render() {
-        return(
-            <div className="app">
-                <Header />
-                <RandomPlanet />
-
-                <PeoplePage />
-            </div>
-        )
-    }
+        <PeoplePage />
+      </div>
+    );
+  }
 }
 
 // TODO 72 next
