@@ -36,7 +36,7 @@ export default class App extends Component {
                 left={<PersonList />}
                 right={<PersonDetails itemId={11} />}
               />
-              <Row left={<PlanetList />} right={<PlanetDetails itemId={5} />} />
+              <Row left={<PlanetList />} right={<PlanetDetails itemId={4} />} />
               <Row
                 left={<StarshipList />}
                 right={<StarshipDetails itemId={9} />}
