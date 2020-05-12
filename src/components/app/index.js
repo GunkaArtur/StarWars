@@ -25,20 +25,9 @@ export default class App extends Component {
         <RandomPlanet />
 
         <ErrorBoundry>
-          <Row
-            left={<PersonList>{({ name }) => <span>{name}</span>}</PersonList>}
-            right={<PersonDetails itemId={11} />}
-          />
-          <Row
-            left={<PlanetList>{({ name }) => <span>{name}</span>}</PlanetList>}
-            right={<PlanetDetails itemId={5} />}
-          />
-          <Row
-            left={
-              <StarshipList>{({ name }) => <span>{name}</span>}</StarshipList>
-            }
-            right={<StarshipDetails itemId={9} />}
-          />
+          <Row left={<PersonList />} right={<PersonDetails itemId={11} />} />
+          <Row left={<PlanetList />} right={<PlanetDetails itemId={5} />} />
+          <Row left={<StarshipList />} right={<StarshipDetails itemId={9} />} />
         </ErrorBoundry>
       </div>
     );
