@@ -13,23 +13,38 @@ import {
   StarshipList
 } from "../sw-components";
 
+import { SwapiServiceProvider } from "../swapi-service-context";
+import SwapiService from "../../services/swapi-service";
+
 export default class App extends Component {
+  swapiService = new SwapiService();
+
   state = {
     showRandomPlanet: true
   };
 
   render() {
     return (
-      <div className="app">
-        <Header />
-        <RandomPlanet />
+      <ErrorBoundry>
+        <SwapiServiceProvider value={this.swapiService}>
+          <div className="app">
+            <Header />
+            <RandomPlanet />
 
-        <ErrorBoundry>
-          <Row left={<PersonList />} right={<PersonDetails itemId={11} />} />
-          <Row left={<PlanetList />} right={<PlanetDetails itemId={5} />} />
-          <Row left={<StarshipList />} right={<StarshipDetails itemId={9} />} />
-        </ErrorBoundry>
-      </div>
+            <ErrorBoundry>
+              <Row
+                left={<PersonList />}
+                right={<PersonDetails itemId={11} />}
+              />
+              <Row left={<PlanetList />} right={<PlanetDetails itemId={5} />} />
+              <Row
+                left={<StarshipList />}
+                right={<StarshipDetails itemId={9} />}
+              />
+            </ErrorBoundry>
+          </div>
+        </SwapiServiceProvider>
+      </ErrorBoundry>
     );
   }
 }
