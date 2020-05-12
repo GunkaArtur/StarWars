@@ -58,7 +58,6 @@ export default class ItemDetails extends Component {
 
     const hasData = !(loading || error);
 
-    // const content = hasData ? <ItemView item={item} img={img} /> : null;
     const spinner = loading ? <Spiner /> : null;
     const errorMessage = error ? <ErrorIndicator /> : null;
 
@@ -66,7 +65,6 @@ export default class ItemDetails extends Component {
       <div className="person-details card">
         {errorMessage}
         {spinner}
-        {/*{content}*/}
         <img
           src={img}
           alt=""
