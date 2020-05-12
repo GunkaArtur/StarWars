@@ -54,9 +54,11 @@ export default class ItemDetails extends Component {
     }
     const { loading } = this.state;
 
+    const { name } = item;
+
     const hasData = !(loading || error);
 
-    const content = hasData ? <ItemView item={item} img={img} /> : null;
+    // const content = hasData ? <ItemView item={item} img={img} /> : null;
     const spinner = loading ? <Spiner /> : null;
     const errorMessage = error ? <ErrorIndicator /> : null;
 
@@ -64,37 +66,26 @@ export default class ItemDetails extends Component {
       <div className="person-details card">
         {errorMessage}
         {spinner}
-        {content}
+        {/*{content}*/}
+        <img
+          src={img}
+          alt=""
+          className="person-image"
+          width={300}
+          height={300}
+        />
+        {hasData ? (
+          <div className="card-body">
+            <h2>{name}</h2>
+            <ul className="list-group list-group-flush">
+              {React.Children.map(this.props.children, child => {
+                return React.cloneElement(child, { item });
+              })}
+            </ul>
+            <ErrorButton />
+          </div>
+        ) : null}
       </div>
     );
   }
 }
-
-const ItemView = ({ item, img }) => {
-  const { name, gender, birthYear, eyeColor } = item;
-
-  return (
-    <>
-      <img src={img} alt="" className="person-image" width={300} height={300} />
-
-      <div className="card-body">
-        <h2>{name}</h2>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            <span>Gender</span>
-            <span>{gender}</span>
-          </li>
-          <li className="list-group-item">
-            <span>Date of birth</span>
-            <span>{birthYear}</span>
-          </li>
-          <li className="list-group-item">
-            <span>Eye color</span>
-            <span>{eyeColor}</span>
-          </li>
-        </ul>
-        <ErrorButton />
-      </div>
-    </>
-  );
-};

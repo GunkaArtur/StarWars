@@ -26,14 +26,15 @@ export default class App extends Component {
     const personDetails = (
       <ItemDetails itemId={11} getData={getPerson} getImgUrl={getPersonImg}>
         <Record field="gender" label="Gender" />
+        <Record field="eyeColor" label="Eye Color" />
       </ItemDetails>
     );
     const starhipDetails = (
-      <ItemDetails
-        itemId={5}
-        getData={getStarship}
-        getImgUrl={getStarshipImg}
-      />
+      <ItemDetails itemId={5} getData={getStarship} getImgUrl={getStarshipImg}>
+        <Record field="model" label="Model" />
+        <Record field="length" label="Length" />
+        <Record field="costInCredits" label="Cost" />
+      </ItemDetails>
     );
 
     return (
