@@ -13,7 +13,7 @@ import {
   StarshipsPage,
   LoginPage
 } from "../pages";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import StarshipDetails from "../sw-components/starship-details";
 import PersonDetails from "../sw-components/person-details";
 
@@ -48,43 +48,45 @@ export default class App extends Component {
             <div className="app">
               <Header onServiceChange={this.onServicveChange} />
               <RandomPlanet />
-
-              <Route
-                path={"/"}
-                render={() => <h2>Welcome to StarDB</h2>}
-                exact
-              />
-              <Route path="/people" component={PeoplePage} />
-              <Route path="/planets/:id?" component={PlanetPage} />
-              <Route path="/starships" component={StarshipsPage} exact />
-              <Route
-                path="/starships/:id"
-                render={({ match }) => {
-                  console.log("match", match);
-                  const { id } = match.params;
-                  return <StarshipDetails itemId={id} />;
-                }}
-                exact
-              />
-              <Route
-                path="/people/:id"
-                render={({ match }) => {
-                  console.log("match", match);
-                  const { id } = match.params;
-                  return <PersonDetails itemId={id} />;
-                }}
-                exact
-              />
-              <Route
-                path="/login"
-                render={() => (
-                  <LoginPage isLoggedIn={isLoggedIn} onLogin={this.onLogin} />
-                )}
-              />
-              <Route
-                path="/secret"
-                render={() => <SecretPage isLoggedIn={isLoggedIn} />}
-              />
+              <Switch>
+                <Route
+                  path={"/"}
+                  render={() => <h2>Welcome to StarDB</h2>}
+                  exact
+                />
+                <Route path="/people" component={PeoplePage} />
+                <Route path="/planets/:id?" component={PlanetPage} />
+                <Route path="/starships" component={StarshipsPage} exact />
+                <Route
+                  path="/starships/:id"
+                  render={({ match }) => {
+                    console.log("match", match);
+                    const { id } = match.params;
+                    return <StarshipDetails itemId={id} />;
+                  }}
+                  exact
+                />
+                <Route
+                  path="/people/:id"
+                  render={({ match }) => {
+                    console.log("match", match);
+                    const { id } = match.params;
+                    return <PersonDetails itemId={id} />;
+                  }}
+                  exact
+                />
+                <Route
+                  path="/login"
+                  render={() => (
+                    <LoginPage isLoggedIn={isLoggedIn} onLogin={this.onLogin} />
+                  )}
+                />
+                <Route
+                  path="/secret"
+                  render={() => <SecretPage isLoggedIn={isLoggedIn} />}
+                />
+                <Route render={() => <h2>Page not found</h2>} />
+              </Switch>
             </div>
           </Router>
         </SwapiServiceProvider>
