@@ -26,7 +26,7 @@ ItemList.defaultProps = {
   onItemSelected: () => {}
 };
 
-ItemList.PropTypes = {
+ItemList.propTypes = {
   onItemSelected: PropTypes.func,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   children: PropTypes.func.isRequired
