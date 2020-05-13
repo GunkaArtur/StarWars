@@ -6,7 +6,7 @@ const PeoplePage = ({ history }) => {
   return (
     <PersonList
       onItemSelected={itemId => {
-        history.push(`/people/${itemId}`);
+        history.push(itemId);
       }}
     />
   );
