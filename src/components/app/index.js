@@ -15,20 +15,31 @@ import {
 
 import { SwapiServiceProvider } from "../swapi-service-context";
 import SwapiService from "../../services/swapi-service";
+import DummySwapiService from "../../services/dummy-swapi-service";
 
 export default class App extends Component {
-  swapiService = new SwapiService();
-
   state = {
-    showRandomPlanet: true
+    showRandomPlanet: true,
+    swapiService: new SwapiService()
+  };
+
+  onServicveChange = () => {
+    this.setState(({ swapiService }) => {
+      const Service =
+        swapiService instanceof SwapiService ? DummySwapiService : SwapiService;
+      console.log("Changed to, ", Service.name);
+      return {
+        swapiService: new Service()
+      };
+    });
   };
 
   render() {
     return (
       <ErrorBoundry>
-        <SwapiServiceProvider value={this.swapiService}>
+        <SwapiServiceProvider value={this.state.swapiService}>
           <div className="app">
-            <Header />
+            <Header onServiceChange={this.onServicveChange} />
             <RandomPlanet />
 
             <ErrorBoundry>
@@ -49,4 +60,4 @@ export default class App extends Component {
   }
 }
 
-// TODO 77 next
+// TODO 87 next
