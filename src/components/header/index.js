@@ -11,7 +11,7 @@ const Header = ({ onServiceChange }) => {
           <Link to="/people/">People</Link>
         </li>
         <li>
-          <Link to="/planet/s">Planets</Link>
+          <Link to="/planets/">Planets</Link>
         </li>
         <li>
           <Link to="/starships/">Starships</Link>

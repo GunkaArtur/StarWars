@@ -38,6 +38,7 @@ export default class ItemDetails extends Component {
     if (!itemId) {
       return;
     }
+    debugger;
 
     getData(itemId)
       .then(item => {
@@ -52,6 +53,9 @@ export default class ItemDetails extends Component {
 
   render() {
     const { item, error, img } = this.state;
+
+    console.log("item details prop", this.props);
+    console.log("item details state", this.state);
 
     if (!this.state.item) {
       return <span>Select a person</span>;
