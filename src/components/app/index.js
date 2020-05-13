@@ -33,6 +33,11 @@ export default class App extends Component {
               <Header onServiceChange={this.onServicveChange} />
               <RandomPlanet />
 
+              <Route
+                path={"/"}
+                render={() => <h2>Welcome to StarDB</h2>}
+                exact
+              />
               <Route path="/people" component={PeoplePage} />
               <Route path="/planets" component={PlanetPage} />
               <Route path="/starships" component={StarshipsPage} />
@@ -44,4 +49,4 @@ export default class App extends Component {
   }
 }
 
-// TODO 87 next
+// TODO 98 next
